@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Press+Start+2P&family=Rubik:wght@500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 215 22% 15%;
+  --foreground: 0 0% 98%;
+  --muted: 215 16% 47%;
+  --muted-foreground: 215 5% 65%;
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 4%;
+  --card-foreground: 0 0% 98%;
+  --border: 215 16% 47%;
+  --input: 215 16% 47%;
+  --primary: 271 76% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 160 64% 40%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 35 92% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 271 76% 53%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 215 22% 15%;
+  --foreground: 0 0% 98%;
+  --muted: 215 16% 47%;
+  --muted-foreground: 215 5% 65%;
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 4%;
+  --card-foreground: 0 0% 98%;
+  --border: 215 16% 47%;
+  --input: 215 16% 47%;
+  --primary: 271 76% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 160 64% 40%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 35 92% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 271 76% 53%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+/* Game specific styles */
+.game-card {
+  transition: all 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.spin-wheel {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.wheel-section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 50%, 100% 0, 100% 33%);
+  transform-origin: center;
+}
+
+.wheel-indicator {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  z-index: 10;
+}
+
+.typing-game .letter {
+  display: inline-block;
+  min-width: 10px;
+}
+
+.typing-game .letter.active {
+  border-bottom: 2px solid hsl(var(--primary));
+}
+
+.typing-game .letter.correct {
+  color: hsl(var(--secondary));
+}
+
+.typing-game .letter.incorrect {
+  color: hsl(var(--destructive));
+}
+
+.traffic-light {
+  width: 80px;
+  height: 200px;
+  background-color: #374151;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.light {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #4B5563;
+}
+
+.red-active {
+  background-color: hsl(var(--destructive));
+  box-shadow: 0 0 20px hsl(var(--destructive));
+}
+
+.yellow-active {
+  background-color: hsl(var(--accent));
+  box-shadow: 0 0 20px hsl(var(--accent));
+}
+
+.green-active {
+  background-color: hsl(var(--secondary));
+  box-shadow: 0 0 20px hsl(var(--secondary));
+}
+
+.bread-character {
+  width: 50px;
+  height: 50px;
+  background-color: hsl(var(--accent));
+  border-radius: 8px;
+  position: relative;
+}
+
+.bread-character::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 8px;
+  height: 8px;
+  background-color: #111827;
+  border-radius: 50%;
+  box-shadow: 22px 0 0 #111827;
+}
+
+.bread-character::after {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  width: 20px;
+  height: 5px;
+  background-color: #111827;
+  border-radius: 5px;
+}
+
+.obstacle {
+  width: 30px;
+  height: 30px;
+  background-color: hsl(var(--destructive));
+  border-radius: 5px;
+  position: absolute;
+}
+
+@layer components {
+  .font-game {
+    font-family: 'Press Start 2P', cursive;
+  }
+  
+  .font-heading {
+    font-family: 'Rubik', sans-serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+}
